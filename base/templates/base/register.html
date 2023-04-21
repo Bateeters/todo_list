@@ -9,18 +9,19 @@
     <form method="POST">
         {% csrf_token %}
 
-        <!-- renders all form fields 
+        <!-- renders all form fields in p tags 
         {{form.as_p}} -->
                 
         <!-- access each form field individually -->
         <label for="">{{form.username.label}}</label>
         {{form.username}}
+        <p>Username can only contain numbers and letters.</p>
 
         <label for="">{{form.password1.label}}</label>
         {{form.password1}}
 
         <label for="">{{form.password2.label}}</label>
-        {{form.password2}}
+        {{form.password2}} 
 
         <input style="margin-top:10px;" class="button" type="submit" value="Register">
     </form>
