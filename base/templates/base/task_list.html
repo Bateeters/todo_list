@@ -14,15 +14,16 @@
     {% endif %}
 </div>
 
+<!-- Task Search Bar -->
 <div id="search-add-wrapper">
     <form method="GET" style="margin-top:20px;display:flex;">
-        <input type="text" name="search-area" value="{{search_input}}">
-        <input class="button" type="submit" value='Search'>
+        <input type="text" name="search-area" value="{{search_input}}"> <!-- Input Field -->
+        <input class="button" type="submit" value='Search'> <!-- Search Button -->
     </form>
-    <a id="add-link" href="{% url 'task-create' %}">&#x2b;</a>
+    <a id="add-link" href="{% url 'task-create' %}">&#x2b;</a> <!-- Add Task Button -->
 </div>
 
-
+<!-- Loop for populating task list -->
 <div class="card-body task-items-wrapper">
     {% for task in tasks %} <!-- is django syntax to write python logic -->
         <div class="task-wrapper">
@@ -38,40 +39,13 @@
                 <a href="{% url 'task-update' task.id %}">{{task}}</a>
             </div>
             <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
-            {% endif %}
+            {% endif %} <!-- close if loop -->
 
         </div>
 
     {% empty %}
     <h3>No Items in List</h3>
-    {% endfor %}
+    {% endfor %} <!-- Close for loop -->
 </div>
-
-
-<!--
-<table>
-    <tr>
-        <th>Item</th>
-        <th></th>
-        <th></th>
-    </tr>-->
-    <!-- create for loop for each object in task list -->
-    <!-- {% for task in tasks %}  is django syntax to write python logic 
-    <tr> -->
-        <!-- pulling task title
-        <td>{{task.title}}</td>  --> 
-        <!-- ^ is django syntax to write python variables 
-        <td><a href="{% url 'task' task.id %}">View</a></td>
-        <td><a href="{% url 'task-update' task.id %}">Edit</a></td>
-        <td><a href="{% url 'task-delete' task.id %}">Delete</a></td> 
-    </tr> -->
-
-    <!-- if list is empty condition 
-    {% empty %}
-    <h3>No Items in List</h3> -->
-
-    <!-- end for loop 
-    {% endfor %}
-</table>-->
 
 {% endblock content %}
